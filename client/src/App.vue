@@ -1,7 +1,8 @@
 <template>
   <div id="app" class="container d-flex flex-column justify-content-center align-items-center mt-5">
     <div v-if="showAlert" class="alert alert-danger" role="alert">Update vorhanden! Bitte App neu starten!</div>
-    <h3>Willkommen bei der Service Worker Untersuchung!</h3>
+    <h3>Hier könnte Ihre Werbung sein!</h3>
+    <img src="/employees.jpg" width="50%" alt="menschen"><br>
     <ButtonGet @get="fetchData"></ButtonGet>
     <CardView :employees="employees" @del="delEmployee"></CardView>
   </div>
