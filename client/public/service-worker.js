@@ -11,3 +11,5 @@ if (workbox) {
 } else {
   console.log(`Workbox didn't load`);
 }
+
+self.skipWaiting();
