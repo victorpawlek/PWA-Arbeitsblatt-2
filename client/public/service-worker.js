@@ -1,3 +1,4 @@
+
 if (workbox) {
   console.log(`Workbox is loaded`);
   workbox.setConfig({ debug: true });
@@ -8,8 +9,20 @@ if (workbox) {
       cacheName: 'roberts-cache',
     }),
   );
+  workbox.routing.registerRoute(
+  new RegExp('/images/.*.jpg'),
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: 'roberts-image-cache',
+  }),
+);
 } else {
   console.log(`Workbox didn't load`);
 }
-
 self.skipWaiting();
+self.addEventListener('push', (event) => {
+  const data = event.data.json();
+  self.registration.showNotification(data.title, {
+    body: data.body.message,
+    icon: 'img/icons/employees_192x192.png',
+  });
+});
